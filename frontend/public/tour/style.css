@@ -1,0 +1,243 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #111;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+#hud {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  z-index: 10;
+  color: white;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 12px 14px;
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  max-width: 420px;
+}
+
+#hud .title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+#hud .hint {
+  opacity: 0.9;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.label {
+  position: absolute;
+  z-index: 20;
+  transform: translate(-50%, -115%);
+  pointer-events: none;
+
+  color: white;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  padding: 10px 12px;
+  min-width: 220px;
+  max-width: 340px;
+  backdrop-filter: blur(8px);
+}
+
+.label-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.label-text {
+  font-size: 14px;
+  opacity: 0.95;
+  line-height: 1.35;
+}
+
+#crosshair{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: rgba(255,255,255,0.85);
+  font-size: 22px;
+  user-select: none;
+  z-index: 15;
+  pointer-events: none;
+}
+
+#actionHint{
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 26px);
+  transform: translateX(-50%);
+  z-index: 15;
+  color: white;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 8px 10px;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+  font-size: 14px;
+}
+
+.viewer{
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(6px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.viewer-bar{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  color: white;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.viewer-title{
+  font-weight: 700;
+}
+
+.viewer-close{
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#viewerCanvas{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.viewer-help{
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  padding: 10px 14px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.mobile-controls {
+  display: none;
+  position: absolute;
+  inset: auto 0 14px 0;
+  z-index: 18;
+  padding: 0 14px;
+  pointer-events: none;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.move-pad {
+  display: grid;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.move-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.move-btn,
+.action-btn {
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.52);
+  color: #fff;
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+}
+
+.move-btn {
+  width: 54px;
+  height: 54px;
+  font-size: 22px;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.move-pad .up,
+.move-pad .down {
+  justify-self: center;
+}
+
+.action-btn {
+  min-width: 156px;
+  min-height: 52px;
+  padding: 0.7rem 1rem;
+  font-size: 15px;
+  font-weight: 600;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+@media (pointer: coarse), (max-width: 768px) {
+  #hud {
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    max-width: none;
+    padding: 10px 12px;
+  }
+
+  #hud .hint {
+    font-size: 13px;
+  }
+
+  #crosshair {
+    display: none;
+  }
+
+  .label {
+    min-width: 0;
+    max-width: min(280px, calc(100vw - 28px));
+    font-size: 13px;
+  }
+
+  #actionHint {
+    top: auto;
+    bottom: 154px;
+    max-width: calc(100vw - 28px);
+    text-align: center;
+  }
+
+  .mobile-controls {
+    display: flex;
+  }
+
+  .viewer-bar {
+    gap: 10px;
+  }
+
+  .viewer-title {
+    font-size: 15px;
+    line-height: 1.25;
+  }
+
+  .viewer-close {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+
+  .viewer-help {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+}

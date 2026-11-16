@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Museum Stand Serif';
+  src: url('../../shared/assets/stands/noto-serif-condensed.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+.Frame {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  background: #780d2c;
+}
+
+.Board {
+  position: absolute;
+  height: 1280px;
+  border: 8px solid #9a804e;
+  background: #780d2c;
+  transform-origin: top left;
+  overflow: hidden;
+}
+
+.Heading {
+  position: absolute;
+  left: 16px;
+  margin: 0;
+  color: #cbb77a;
+  font-family: 'Museum Stand Serif', Georgia, serif;
+  font-weight: 400;
+  text-align: center;
+  line-height: 62px;
+}
+
+.Heading span { display: block; white-space: nowrap; }
+.Slot { position: absolute; padding: 0; border: 0; background: transparent; }
+.Outline { position: absolute; inset: 0; display: block; background-size: 100% 100%; background-repeat: no-repeat; pointer-events: none; }
+.PhotoButton { cursor: pointer; }
+.PhotoButton:focus-visible { outline: 3px solid white; outline-offset: 5px; }
+.Photo { display: block; width: 100%; height: 100%; object-fit: cover; clip-path: polygon(0 0, 80% 0, 100% 5%, 100% 100%, 0 100%); }

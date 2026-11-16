@@ -1,0 +1,39 @@
+.Carousel {
+  --stand-height: min(680px, 70svh, calc((100vw - 100px) * 1.7777778));
+  width: calc(100vw - 100px);
+  min-width: 0;
+  margin: 0 0 32px calc(50% - 50vw + 50px);
+}
+.Track {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-color: var(--color-primary-muted) transparent;
+  padding-bottom: 14px;
+  cursor: grab;
+  user-select: none;
+}
+.Track:active { cursor: grabbing; }
+.Slide {
+  flex: 0 0 calc(var(--stand-height) * var(--stand-ratio));
+  width: calc(var(--stand-height) * var(--stand-ratio));
+  height: var(--stand-height);
+  scroll-snap-align: start;
+}
+.Track:focus-visible { outline: 2px solid var(--c-blue); outline-offset: 4px; }
+@media (max-width: 600px) { .Track { gap: 16px; } }
+.Controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 20px; }
+.Arrow { flex: 0 0 44px; height: 44px; border: 1px solid var(--color-wrapper-border); border-radius: 50%; background: white; color: var(--c-blue); font-size: 32px; line-height: 1; cursor: pointer; }
+.Arrow:hover { background: var(--color-primary); color: white; }
+.Caption { display: flex; flex-direction: column; gap: 5px; margin: 0; text-align: center; color: var(--c-dark-blue); font-size: 15px; line-height: 1.4; }
+.Counter { color: var(--c-dark-gray); font-size: 13px; }
+.Dots { display: flex; flex-wrap: wrap; justify-content: center; margin-top: 12px; }
+.Dot { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.Dot::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary-muted); }
+.Dot[aria-current=true]::after { background: var(--c-blue); transform: scale(1.3); }
+.Carousel:focus-visible, .Arrow:focus-visible, .Dot:focus-visible { outline: 2px solid var(--c-blue); outline-offset: 4px; }
+
+.Arrow:disabled { opacity: 0.35; cursor: default; background: white; color: var(--c-blue); }
